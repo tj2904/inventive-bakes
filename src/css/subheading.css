@@ -1,0 +1,10 @@
+*.subheading {
+
+    color: #252525;
+    flex: auto;
+    font-weight: 700;
+    text-align: center;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+    padding: 0 10px;
+}

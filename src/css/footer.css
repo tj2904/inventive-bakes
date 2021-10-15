@@ -1,0 +1,13 @@
+div.footer {
+  box-sizing: border-box;
+  background-color: rgb(18, 18, 20);
+  background-image: url(../images/stressed-linen.png);
+  padding: 30px;
+}
+
+p.footer {
+  text-align: center;
+  font-size:calc(10px + 0.3vw);
+  letter-spacing: 0.09vw;
+  color: #fff;
+}

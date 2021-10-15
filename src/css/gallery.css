@@ -1,0 +1,87 @@
+img {
+  width: 350px;
+  height: 350px;
+  margin: 30px;
+  border-radius: 15px;
+}
+
+div.GalleryContainer {
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+#portfolio .shot-item {
+  margin-right: 30px;
+}
+
+.shot-item {
+  border-radius: 4px;
+  background: #fff;
+  position: relative;
+}
+
+.shot-item .overlay {
+  position: absolute;
+  width: 350px;
+  height: 350px;
+  margin: 30px;
+  left: 0;
+  top: 0;
+  border-radius: 15px;
+  background: rgba(0, 180, 217, 0.6);
+  opacity: 0;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+}
+
+.overlay {
+  opacity: 0;
+}
+
+.overlay .icons i {
+  height: 42px;
+  width: 42px;
+  line-height: 42px;
+  color: rgb(0, 180, 217);
+  margin: -30px;
+  padding-top: 5px;
+  padding-left: 1px;
+  position: absolute;
+  z-index: 2;
+  cursor: pointer;
+  text-align: center;
+  font-size: 25px;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+  background: #fff;
+  border-radius: 4px;
+}
+
+.overlay i:hover {
+  color: #e1306c;
+}
+
+.overlay .link {
+  position: absolute;
+  left: 50%;
+  margin-left: 10px;
+  top: 50%;
+  color: #fff;
+}
+
+.shot-item:hover .overlay {
+  opacity: 0.9;
+}
+
+a:not([href]):not([tabindex]) {
+  color: #fff;
+}
+
+a:not([href]):not([tabindex]):focus,
+a:not([href]):not([tabindex]):hover {
+  color: #fff;
+}

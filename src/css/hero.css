@@ -1,0 +1,16 @@
+.hero-heading {
+  font-size:calc(12px + 2.2vw);
+  font-weight: 500;
+  color: #fff;
+  letter-spacing: 0.1rem;
+  line-height: 1vw;
+  margin-bottom: 25px;
+}
+
+.head-title {
+  color: #fff;
+  font-size:calc(12px + 5.5vw);
+  letter-spacing: 1vw;
+  text-transform: uppercase;
+  font-weight: 700;
+}

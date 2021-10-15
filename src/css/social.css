@@ -1,0 +1,28 @@
+.social-icon a {
+  color: #000;
+  background: #fff;
+  padding: 8px;
+  display: inline-flex;
+  border-radius: 100%;
+  font-size: 30px;
+  margin: 18px;
+  transition: all 0.2s ease-in-out 0.1s;
+  -moz-transition: all 0.2s ease-in-out 0.1s;
+  -webkit-transition: all 0.2s ease-in-out 0.1s;
+  -o-transition: all 0.2s ease-in-out 0.1s;
+}
+
+.social-icon a:hover {
+  color: #fff;
+}
+
+.social-icon .facebook {
+  color: #3b5999;
+}
+.social-icon .facebook:hover {
+  background: #3b5999;
+}
+
+.social-icon .instagram:hover {
+  background: #e1306c;
+}
