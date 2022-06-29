@@ -2,7 +2,7 @@
   "extends": [
     "config:base"
   ],
-  "reviewer": ["tj2904"],
+  "reviewers": ["tj2904"],
   "schedule": [
     "before 9am every day"
   ]
