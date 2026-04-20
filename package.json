@@ -18,10 +18,14 @@
   },
   "scripts": {
     "start": "vite",
-    "build": "vite build",
+    "build": "vite build --outDir build",
     "preview": "vite preview",
     "test": "vitest run --coverage",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "test:ui": "node scripts/vitest-jest-adapter.cjs"
+  },
+  "engines": {
+    "node": ">=20"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.3.4",

@@ -7,7 +7,7 @@ Inventive Bakes is a static React site now built with Vite for faster local deve
 - `npm start`: Run the Vite dev server.
 - `npm test`: Run Vitest in CI mode with coverage.
 - `npm run test:watch`: Run Vitest in watch mode.
-- `npm run build`: Create a production build in `dist/`.
+- `npm run build`: Create a production build in `build/`.
 - `npm run preview`: Preview the production build locally.
 
 ## Local setup
