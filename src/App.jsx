@@ -51,6 +51,7 @@ function App() {
       <Hero />
       <SubHeading />
       <Gallery gallery={gallery.images} />
+      {/* Instagram feed intentionally disabled pending a dedicated feature task. */}
       <Footer />
     </div>
   );
