@@ -1,0 +1,11 @@
+{
+  "jest.jestCommandLine": "npm run test:ui --",
+  "jest.rootPath": ".",
+  "python.testing.autoTestDiscoverOnSaveEnabled": false,
+  "python.testing.pytestEnabled": false,
+  "python.testing.unittestEnabled": false,
+  "python.testing.nosetestsEnabled": false,
+  "python.defaultInterpreterPath": "/usr/bin/python3",
+  "python.testing.promptToConfigure": false,
+  "vitest.commandLine": "npm run test:watch"
+}
