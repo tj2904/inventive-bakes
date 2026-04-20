@@ -15,9 +15,12 @@
   },
   "packageRules": [
     {
-      "description": "Automerge safe npm updates after CI passes",
+      "description": "Automerge safe npm devDependency updates after CI passes",
       "matchManagers": [
         "npm"
+      ],
+      "matchDepTypes": [
+        "devDependencies"
       ],
       "matchUpdateTypes": [
         "patch",
@@ -25,6 +28,16 @@
       ],
       "automerge": true,
       "automergeType": "pr"
+    },
+    {
+      "description": "Require review for runtime dependency updates",
+      "matchManagers": [
+        "npm"
+      ],
+      "matchDepTypes": [
+        "dependencies"
+      ],
+      "automerge": false
     },
     {
       "description": "Never automerge major updates",
