@@ -28,6 +28,7 @@
     "node": ">=20"
   },
   "devDependencies": {
+    "@babel/runtime": "7.26.10",
     "@vitejs/plugin-react": "^4.3.4",
     "@vitest/coverage-v8": "^4.1.4",
     "jsdom": "^26.1.0",
