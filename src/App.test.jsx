@@ -16,7 +16,9 @@ it("renders gallery cards with instagram links", () => {
   expect(galleryImages).toHaveLength(6);
   expect(galleryLinks).toHaveLength(6);
 
-  const hrefs = Array.from(galleryLinks).map((link) => link.getAttribute("href"));
+  const hrefs = Array.from(galleryLinks).map((link) =>
+    link.getAttribute("href"),
+  );
   expect(hrefs).toContain("https://www.instagram.com/p/B0LFqIpH_GS/");
   expect(hrefs).toContain("https://www.instagram.com/p/BxLYDGupKxZ/");
 });
@@ -24,12 +26,18 @@ it("renders gallery cards with instagram links", () => {
 it("renders social links and footer attribution", () => {
   const { container } = render(<App />);
 
-  const facebook = container.querySelector('a.facebook');
-  const instagram = container.querySelector('a.instagram');
+  const facebook = container.querySelector("a.facebook");
+  const instagram = container.querySelector("a.instagram");
   const author = screen.getByRole("link", { name: /Tim Jackson/i });
 
-  expect(facebook).toHaveAttribute("href", "https://www.facebook.com/gemmalewis1");
-  expect(instagram).toHaveAttribute("href", "https://www.instagram.com/inventivebakes/");
+  expect(facebook).toHaveAttribute(
+    "href",
+    "https://www.facebook.com/gemmalewis1",
+  );
+  expect(instagram).toHaveAttribute(
+    "href",
+    "https://www.instagram.com/inventivebakes/",
+  );
   expect(author).toHaveAttribute("href", "https://tj2904.com");
   expect(screen.getByText(/Copyright/)).toBeInTheDocument();
 });
