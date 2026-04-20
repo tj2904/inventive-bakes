@@ -1,6 +1,6 @@
 {
   "extends": [
-    "config:base"
+    "config:recommended"
   ],
   "dependencyDashboard": true,
   "labels": [
@@ -54,6 +54,6 @@
     "tj2904"
   ],
   "schedule": [
-    "before 9am every day"
+    "before 9am"
   ]
 }
