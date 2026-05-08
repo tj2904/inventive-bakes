@@ -68,17 +68,25 @@ jobs:
 
             const { owner, repo } = context.repo;
             const issue_number = context.issue.number;
-            const { data: comments } = await github.rest.issues.listComments({
-              owner,
-              repo,
-              issue_number,
-              per_page: 100,
-            });
+            let existing;
+            let page = 1;
+            while (!existing) {
+              const { data: comments } = await github.rest.issues.listComments({
+                owner,
+                repo,
+                issue_number,
+                per_page: 100,
+                page,
+              });
 
-            const existing = comments.find(
-              (comment) =>
-                comment.user?.type === "Bot" && comment.body?.includes(marker),
-            );
+              existing = comments.find(
+                (comment) =>
+                  comment.user?.type === "Bot" && comment.body?.includes(marker),
+              );
+
+              if (comments.length < 100) break;
+              page += 1;
+            }
 
             if (existing) {
               await github.rest.issues.updateComment({
