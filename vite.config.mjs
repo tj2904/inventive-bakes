@@ -11,7 +11,7 @@ export default defineConfig({
     exclude: ["node_modules/**", "dist/**", "coverage/**"],
     coverage: {
       provider: "v8",
-      reporter: ["text", "lcov"],
+      reporter: ["text", "lcov", "json-summary"],
       all: true,
       include: ["src/**/*.{js,jsx}"],
       exclude: [
@@ -22,10 +22,10 @@ export default defineConfig({
         "src/Feed.js",
       ],
       thresholds: {
-        lines: 80,
-        statements: 80,
-        functions: 80,
-        branches: 80,
+        lines: 95,
+        statements: 95,
+        functions: 95,
+        branches: 95,
       },
     },
   },
