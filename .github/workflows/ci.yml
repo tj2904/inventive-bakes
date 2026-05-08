@@ -6,6 +6,10 @@ on:
   pull_request:
     branches: [master]
 
+permissions:
+  contents: read
+  pull-requests: write
+
 jobs:
   test-and-build:
     runs-on: ubuntu-latest
@@ -25,6 +29,80 @@ jobs:
 
       - name: Run tests with coverage
         run: npm test
+
+      - name: Report test and coverage summary on PR
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v8
+        with:
+          script: |
+            const fs = require("node:fs");
+            const marker = "<!-- coverage-report -->";
+            const path = "coverage/coverage-summary.json";
+
+            let summary;
+            try {
+              if (!fs.existsSync(path)) {
+                core.setFailed(`Coverage summary file not found at ${path}`);
+                return;
+              }
+              summary = JSON.parse(fs.readFileSync(path, "utf8"));
+            } catch (error) {
+              core.setFailed(`Failed to read coverage summary: ${error.message}`);
+              return;
+            }
+            const total = summary.total;
+            const fmt = (metric) =>
+              `${metric.pct}% (${metric.covered}/${metric.total})`;
+
+            const body = [
+              marker,
+              "## ✅ CI Test Report",
+              "Tests and build checks passed for this run.",
+              "",
+              "### Coverage",
+              `- Statements: ${fmt(total.statements)}`,
+              `- Branches: ${fmt(total.branches)}`,
+              `- Functions: ${fmt(total.functions)}`,
+              `- Lines: ${fmt(total.lines)}`,
+            ].join("\n");
+
+            const { owner, repo } = context.repo;
+            const issue_number = context.issue.number;
+            let existing;
+            let page = 1;
+            while (!existing) {
+              const { data: comments } = await github.rest.issues.listComments({
+                owner,
+                repo,
+                issue_number,
+                per_page: 100,
+                page,
+              });
+
+              existing = comments.find(
+                (comment) =>
+                  comment.user?.type === "Bot" && comment.body?.includes(marker),
+              );
+
+              if (comments.length < 100) break;
+              page += 1;
+            }
+
+            if (existing) {
+              await github.rest.issues.updateComment({
+                owner,
+                repo,
+                comment_id: existing.id,
+                body,
+              });
+            } else {
+              await github.rest.issues.createComment({
+                owner,
+                repo,
+                issue_number,
+                body,
+              });
+            }
 
       - name: Build site
         run: npm run build

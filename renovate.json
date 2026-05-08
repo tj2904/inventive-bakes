@@ -3,6 +3,8 @@
     "config:recommended"
   ],
   "dependencyDashboard": true,
+  "platformAutomerge": false,
+  "ignoreTests": false,
   "labels": [
     "dependencies"
   ],
