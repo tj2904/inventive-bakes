@@ -54,15 +54,17 @@ jobs:
             const fmt = (metric) =>
               `${metric.pct}% (${metric.covered}/${metric.total})`;
 
-            const body = `${marker}
-            ## ✅ CI Test Report
-            Tests and build checks passed for this run.
-
-            ### Coverage
-            - Statements: ${fmt(total.statements)}
-            - Branches: ${fmt(total.branches)}
-            - Functions: ${fmt(total.functions)}
-            - Lines: ${fmt(total.lines)}`;
+            const body = [
+              marker,
+              "## ✅ CI Test Report",
+              "Tests and build checks passed for this run.",
+              "",
+              "### Coverage",
+              `- Statements: ${fmt(total.statements)}`,
+              `- Branches: ${fmt(total.branches)}`,
+              `- Functions: ${fmt(total.functions)}`,
+              `- Lines: ${fmt(total.lines)}`,
+            ].join("\n");
 
             const { owner, repo } = context.repo;
             const issue_number = context.issue.number;
