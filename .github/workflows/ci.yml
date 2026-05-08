@@ -38,12 +38,18 @@ jobs:
             const fs = require("node:fs");
             const marker = "<!-- coverage-report -->";
             const path = "coverage/coverage-summary.json";
-            if (!fs.existsSync(path)) {
-              core.setFailed(`Coverage summary file not found at ${path}`);
+
+            let summary;
+            try {
+              if (!fs.existsSync(path)) {
+                core.setFailed(`Coverage summary file not found at ${path}`);
+                return;
+              }
+              summary = JSON.parse(fs.readFileSync(path, "utf8"));
+            } catch (error) {
+              core.setFailed(`Failed to read coverage summary: ${error.message}`);
               return;
             }
-
-            const summary = JSON.parse(fs.readFileSync(path, "utf8"));
             const total = summary.total;
             const fmt = (metric) =>
               `${metric.pct}% (${metric.covered}/${metric.total})`;
@@ -60,7 +66,7 @@ jobs:
 
             const { owner, repo } = context.repo;
             const issue_number = context.issue.number;
-            const comments = await github.paginate(github.rest.issues.listComments, {
+            const { data: comments } = await github.rest.issues.listComments({
               owner,
               repo,
               issue_number,
